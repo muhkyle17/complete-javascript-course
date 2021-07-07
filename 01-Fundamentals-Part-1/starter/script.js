@@ -6,21 +6,26 @@ var population = 110000000
 console.log(population);
 
 
-const age = 1;
+const hasDriversLicense = true;
+const hasGoodVision = true;
 
-if(age >= 18) {
-    console.log('Sarah can get their driving license 🚗');
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+
+
+// if (hasDriversLicense && hasGoodVision) {
+//     console.log('Sarah is able to drive');
+// } else {
+//     console.log('Someone else should drive');
+// }
+
+const isTired = true;
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+if (hasDriversLicense || hasGoodVision && !isTired ) {
+    console.log('Sarah is able to drive');
 } else {
-    const yearsLeft = 18 - age;
-    console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+    console.log('Someone else should drive');
 }
-
-const birthYear = 2012;
-
-let cenutry;
-if(birthYear <= 2000) {
-    century = 20;
-} else {
-    century = 21;
-}
-console.log(century);

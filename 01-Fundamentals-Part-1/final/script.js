@@ -376,6 +376,53 @@ TEST DATA BONUS 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
 GOOD LUCK 😀
 */
 
+/* // Normal Code Challenge
+// const averageDolphins = (96 + 108 + 89) / 3
+const averageKoalas = (88 + 91 + 110) / 3
+const averageDolphins = (88 + 91 + 110) / 3
+console.log(averageDolphins, averageKoalas);
+
+if (averageDolphins > averageKoalas) {
+  console.log('Dolphins are the winners');
+} else if (averageKoalas > averageDolphins) {
+  console.log('Koalas are the winners');
+} else {
+  console.log('The teams are tied');
+} */
+
+/* // BONUS 1 CHALLENGE
+const averageDolphins = (97 + 112 + 101) / 3
+const averageKoalas = (109 + 95 + 123) / 3
+// const averageDolphins = (109 + 95 + 123) / 3
+console.log(averageDolphins, averageKoalas);
+
+if (averageDolphins > averageKoalas && averageDolphins >= 100) {
+  console.log('Dolphins are the winners');
+} else if (averageKoalas > averageDolphins && averageKoalas >= 100) {
+  console.log('Koalas are the winners');
+} else if (averageKoalas === averageDolphins && averageDolphins >= 100 && averageKoalas >= 100) {
+  console.log("It's a draw!");
+} else if ((averageDolphins && averageKoalas) < 100) {
+  console.log('No one wins');
+} */
+
+//BONUS 2 CHALLENGE 
+const averageDolphins = (97 + 112 + 101) / 3
+const averageKoalas = (109 + 95 + 106) / 3
+// const averageKoalas = (109 + 95 + 106) / 3
+console.log(averageDolphins, averageKoalas);
+
+if (averageDolphins > averageKoalas && averageDolphins >= 100) {
+  console.log('Dolphins are the winners');
+} else if (averageKoalas > averageDolphins && averageKoalas >= 100) {
+  console.log('Koalas are the winners');
+} else if (averageKoalas === averageDolphins && averageDolphins >= 100 && averageKoalas >= 100) {
+  console.log("It's a draw!");
+} else if ((averageDolphins && averageKoalas) < 100) {
+  console.log('No one wins');
+}
+
+
 /*
 // const scoreDolphins = (96 + 108 + 89) / 3;
 // const scoreKoalas = (88 + 91 + 110) / 3;
