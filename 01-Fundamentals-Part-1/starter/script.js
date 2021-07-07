@@ -6,16 +6,21 @@ var population = 110000000
 console.log(population);
 
 
-const now = 2037;
-const ageJonas = now - 1991;
-const ageSarah = now - 2018;
+const age = 1;
 
+if(age >= 18) {
+    console.log('Sarah can get their driving license 🚗');
+} else {
+    const yearsLeft = 18 - age;
+    console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+}
 
-console.log(now - 1991 > now - 2018);
+const birthYear = 2012;
 
-let x, y; 
-x = y = 25 - 10 -5;
-console.log(x,y); 
-
-const averageAge = (ageJonas + ageSarah) / 2
-console.log(ageJonas, ageSarah, averageAge);
+let cenutry;
+if(birthYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+console.log(century);
