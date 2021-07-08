@@ -5,27 +5,9 @@ console.log(continent);
 var population = 110000000
 console.log(population);
 
+const age = 23;
+age >= 18 ? console.log('I like to drink wine 🍷') : console.log('I like to drink water 💦');
 
-const hasDriversLicense = true;
-const hasGoodVision = true;
-
-console.log(hasDriversLicense && hasGoodVision);
-console.log(hasDriversLicense || hasGoodVision);
-console.log(!hasDriversLicense);
-
-
-
-// if (hasDriversLicense && hasGoodVision) {
-//     console.log('Sarah is able to drive');
-// } else {
-//     console.log('Someone else should drive');
-// }
-
-const isTired = true;
-console.log(hasDriversLicense && hasGoodVision && isTired);
-
-if (hasDriversLicense || hasGoodVision && !isTired ) {
-    console.log('Sarah is able to drive');
-} else {
-    console.log('Someone else should drive');
-}
+const drink = age >= 18 ? 'wine 🍷' : 'water 💦';
+console.log(`I like to drink ${drink}`);
+console.log(`I like to drink ${age >= 18 ? 'wine 🍷' : 'water 💦'}`);

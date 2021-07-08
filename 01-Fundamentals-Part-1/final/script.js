@@ -543,8 +543,15 @@ HINT: Value X is between 50 and 300, if it's >= 50 && <= 300 😉
 GOOD LUCK 😀
 */
 
-/*
 const bill = 430;
+
+if(bill <= 300 && bill >= 50) {
+  const tip = bill * 0.15;
+  console.log(`The bill is ${bill}, the tip is ${tip}, and the total value is ${bill + tip}`);
+} else {
+  const tip = bill * 0.2;
+  console.log(`The bill is ${bill}, the tip is ${tip}, and the total value is ${bill + tip}`);
+}
+
 const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
-console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
-*/
+console.log(`The bill is ${bill}, the tip is ${tip}, and the total value is ${bill + tip}`);
