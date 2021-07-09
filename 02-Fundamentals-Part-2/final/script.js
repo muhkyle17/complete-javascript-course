@@ -135,6 +135,37 @@ HINT: To check if number A is at least double number B, check for A >= 2 * B. Ap
 GOOD LUCK 😀
 */
 
+// const calcAverage = function (a, b, c) {
+//   return (a + b + c) / 3;
+// };
+
+const calcAverage = (a, b, c) => (a + b + c) / 3
+console.log(calcAverage(3, 4, 5)); // 4
+
+// TEST 1 
+let scoreDolphins = calcAverage(44, 23 , 71);
+let scoreKoalas = calcAverage(65, 54, 49);
+console.log(scoreDolphins, scoreKoalas); // 46 56
+
+const checkWinner = function (avgDolphins, avgKoalas) {
+  if (avgDolphins >= 2 * avgKoalas) {
+    console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`);
+  } else if (avgKoalas >= 2 * avgDolphins) {
+    console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`);
+  } else {
+    console.log('No team wins...');
+  }
+}
+checkWinner(scoreDolphins, scoreKoalas);
+checkWinner(576, 111);
+console.log(checkWinner(576, 100)); // This code will log undefined because there is no return keyword in the checkWinner function 
+
+//Test 2 
+scoreDolphins = calcAverage(85, 54 , 41);
+scoreKoalas = calcAverage(23, 34, 27);
+console.log(scoreDolphins, scoreKoalas);
+checkWinner(scoreDolphins, scoreKoalas);
+
 /*
 const calcAverage = (a, b, c) => (a + b + c) / 3;
 console.log(calcAverage(3, 4, 5));
