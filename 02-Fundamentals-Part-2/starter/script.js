@@ -163,7 +163,7 @@ console.log(ages);
 const ages2 = [age1, age2, age3];
 console.log(ages2);
 
-*/
+
 
 //// Array Methods
 
@@ -196,4 +196,52 @@ console.log(friends.includes(23));
 
 if (friends.includes('Steven')) {
     console.log('You have a friend called Steven');
+}
+
+//// Objects
+
+const jonasArray = [ 
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1991,
+    'teacher',
+    ['Michael', 'Peter', 'Steven']
+];
+
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+*/
+
+// Dot vs. Bracket Notation to retrieve data in objects 
+
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+console.log(jonas);
+console.log(jonas.lastName); // Dot Notation
+console.log(jonas['lastName']); // Bracket Notation 
+
+const nameKey = 'Name';
+console.log(jonas['first' + nameKey]);
+console.log(jonas['last' + nameKey]);
+
+// console.log(jonas.'last' + nameKey)
+
+const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, age, job and friends');
+
+if(jonas[interestedIn]) {
+    console.log(jonas[interestedIn]);
+} else {
+    console.log('Wrong request! Choose between firstName, lastName, age, job and friends')
 }
