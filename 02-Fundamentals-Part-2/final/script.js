@@ -139,6 +139,7 @@ GOOD LUCK 😀
 //   return (a + b + c) / 3;
 // };
 
+/*
 const calcAverage = (a, b, c) => (a + b + c) / 3
 console.log(calcAverage(3, 4, 5)); // 4
 
@@ -165,6 +166,7 @@ scoreDolphins = calcAverage(85, 54 , 41);
 scoreKoalas = calcAverage(23, 34, 27);
 console.log(scoreDolphins, scoreKoalas);
 checkWinner(scoreDolphins, scoreKoalas);
+*/
 
 /*
 const calcAverage = (a, b, c) => (a + b + c) / 3;
@@ -288,26 +290,26 @@ HINT: Remember that an array needs a value in each position, and that value can 
 GOOD LUCK 😀
 */
 
-const calcTip = function (bill) {
+// const calcTip = function (bill) {
 
-  if(bill <= 300 && bill >= 50) {
-    const tip = bill * 0.15;
-    return tip;
-  } else {
-    const tip = bill * 0.2;
-    return tip;
-  }
+//   if(bill <= 300 && bill >= 50) {
+//     const tip = bill * 0.15;
+//     return tip;
+//   } else {
+//     const tip = bill * 0.2;
+//     return tip;
+//   }
 
-}
+// }
 
-const bills = [125, 555, 44];
-console.log(bills);
+// const bills = [125, 555, 44];
+// console.log(bills);
 
-const tips = [calcTip(bills[0]) , calcTip(bills[1]) , calcTip(bills[2])];
-console.log(tips);
+// const tips = [calcTip(bills[0]) , calcTip(bills[1]) , calcTip(bills[2])];
+// console.log(tips);
 
-const total = [bills[0] + tips[0] , bills[1] + tips[1] , bills[2] + tips[2] ]
-console.log(total);
+// const total = [bills[0] + tips[0] , bills[1] + tips[1] , bills[2] + tips[2] ]
+// console.log(total);
 
 // BONUS QUESTION 
 
@@ -647,6 +649,37 @@ HINT: Call calcTip in the loop and use the push method to add values to the tips
 
 GOOD LUCK 😀
 */
+const calcTip = function (bill) {
+
+  if(bill <= 300 && bill >= 50) {
+    const tip = bill * 0.15;
+    return tip;
+  } else {
+    const tip = bill * 0.2;
+    return tip;
+  }
+
+}
+
+const bills = [ 22, 295, 176, 440, 37, 105, 10, 1100, 86, 52 ];
+const tips = [];
+const totals = [];
+
+
+// for (let i = 0; i < bills.length; i++) {
+//   tips.push(calcTip(bills[i]));
+//   totals.push(calcTip(bills[i]) + bills[i]);
+// }
+
+// OR the shorter and cleaner version
+
+for (let i = 0; i < bills.length; i++) {
+  const tip = calcTip(bills[i]);
+  tips.push(tip);
+  totals.push(tip + bills[i]);
+}
+
+console.log(bills, tips, totals);
 
 /*
 const calcTip = function (bill) {
@@ -662,6 +695,7 @@ for (let i = 0; i < bills.length; i++) {
   totals.push(tip + bills[i]);
 }
 console.log(bills, tips, totals);
+*/
 
 const calcAverage = function (arr) {
   let sum = 0;
@@ -674,4 +708,3 @@ const calcAverage = function (arr) {
 console.log(calcAverage([2, 3, 7]));
 console.log(calcAverage(totals));
 console.log(calcAverage(tips));
-*/
