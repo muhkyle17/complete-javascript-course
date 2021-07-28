@@ -16,6 +16,7 @@ let scores, currentScore, activePlayer, playing;
 
 // Starting Conditions
 const init = function () {
+    // Stored values and starts at 0 
     scores = [0, 0];
     currentScore = 0;
     activePlayer = 0;
@@ -37,7 +38,7 @@ init();
 const switchPlayer = function () {
     document.getElementById(`current--${activePlayer}`).textContent = 0;
     currentScore = 0;
-    activePlayer = activePlayer === 0 ? 1 : 0;
+    activePlayer = activePlayer === 0 ? 1 : 0; // This ternary operator gets assigned to activePlayer, so when activePlayer is used again below, it does the ternary operator's condition 
     player0El.classList.toggle('player--active');
     player1El.classList.toggle('player--active');
 }
@@ -66,7 +67,9 @@ btnRoll.addEventListener('click', function() {
 btnHold.addEventListener('click', function () {
     if (playing) {
         // 1. Add current score to active player's score
-        scores[activePlayer] += currentScore; // scores[1] = scores[1] + currentScore
+        scores[activePlayer] += currentScore; 
+        // scores[0] = scores[0] + currentScore
+        // scores[1] = scores[1] + currentScore
         document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
         
         // 2. Check if player's score is >= 100 
