@@ -42,7 +42,6 @@ calcAge(1991);
 // console.log(age);
 // printAge();
 
-*/
 
 // Variable Hoisting
 console.log(me);
@@ -96,3 +95,44 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+
+*/
+
+// console.log(this);
+
+const calcAge = function(birthYear) {
+    // console.log(2037 - birthYear);
+    // console.log(this);
+}
+calcAge(1991);
+
+const calcAgeArrow = birthYear => {
+    // console.log(2037 - birthYear);
+    // console.log(this);    
+};
+calcAgeArrow(1980);
+
+const jonas = {
+    name: 'Jonas',
+    year: 1991,
+    calcAge: function () {
+        console.log(this);
+        console.log(this.name);
+        console.log(2037 - this.year);
+    }
+}
+jonas.calcAge();
+
+const matilda = {
+    name: 'Matilda',
+    year: 2017
+};
+
+// This is called method borrowing - this is when you borrow the calcAge method from the Jonas object onto the matilda object 
+// The meethod will still point to matilda even if the method is written inside the jonas object 
+matilda.calcAge = jonas.calcAge;
+matilda.calcAge();
+
+const f = jonas.calcAge;
+console.log(f);
+f();
