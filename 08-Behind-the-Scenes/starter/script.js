@@ -207,6 +207,7 @@ const jessica2 = {
     family: ['Alice', 'Bob']
 };
 
+// Object.assign will only touch the first level change and not touch the deeper level changes 
 const jessicaCopy = Object.assign({}, jessica2);
 jessicaCopy.lastName = 'Davis'; 
 
