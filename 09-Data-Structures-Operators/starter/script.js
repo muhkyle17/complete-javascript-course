@@ -34,7 +34,69 @@ const restaurant = {
       close: 24,
     },
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`);
+  }
 };
+
+// Spread operator using ...
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr); //[1, 2, 7, 8, 9]
+
+const newArr = [1, 2, ...arr];
+console.log(newArr); //[1, 2, 7, 8, 9]
+
+console.log(...newArr); // 1 2 7 8 9
+console.log(1, 2, 7, 8, 9); // 1 2 7 8 9
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu); // ["Pizza", "Pasta", "Risotto", "Gnocci"]
+console.log(...newMenu); // Pizza Pasta Risotto Gnocci
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy); // ["Pizza", "Pasta", "Risotto"]
+
+// Join 2 arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu); // ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad", "Pizza", "Pasta", "Risotto"]
+console.log(...menu); // Focaccia Bruschetta Garlic Bread Caprese Salad Pizza Pasta Risotto
+
+// Spread operater works on all iterables like arrays, strings, maps, and sets but not objects
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters); // ["J", "o", "n", "a", "s", " ", "S."]
+console.log(...str); // J o n a s
+// console.log(`${...str} Schmedtmann`); // unexpected token 
+
+
+// Real world example
+const ingredients = [
+  // prompt(`Let's make pasta! Ingredient 1?`), 
+  // prompt(`Ingredient 2?`), 
+  // prompt(`Ingredient 3?`)
+];
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]); 
+restaurant.orderPasta(...ingredients);
+
+// Objects 
+const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'};
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+/*
+
+//////////////////////////////////////////
+// Destructuring Objects
+// In destrucuring, the order does not matter so you don't need to a space in between unlike destructuring objects
 
 restaurant.orderDelivery({
   time: '22:30',
@@ -48,8 +110,6 @@ restaurant.orderDelivery ({
   starterIndex: 1
 })
 
-// Destructuring Objects
-// In destrucuring, the order does not matter so you don't need to a space in between unlike destructuring objects
 
 const {name, openingHours, categories} = restaurant;
 console.log(name);
@@ -80,7 +140,6 @@ const {
 } = openingHours;
 console.log(o, c);
 
-/* 
 //////////////////////////////////////////
 // Destructuring Arrays
 const arr = [2, 3, 4];
