@@ -96,8 +96,6 @@ console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
 
-*/
-
 // console.log(this);
 
 const calcAge = function(birthYear) {
@@ -136,3 +134,83 @@ matilda.calcAge();
 const f = jonas.calcAge;
 console.log(f);
 f();
+
+
+
+var firstName = 'Matilda';
+
+const jonas = {
+    firstName: 'Jonas',
+    year: 1991,
+    calcAge: function () {
+        console.log(this);
+        console.log(this.name);
+        console.log(2037 - this.year);
+        
+        // Solution 1 
+        // const self = this; // self or that
+        // const isMillenial = function () {
+            //     console.log(self);
+            //     console.log(self.year >= 1981 && self.year <= 1996);
+        //     // console.log(this.year >= 1981 && this.year <= 1996);
+        // };
+        
+        // Solution 2
+        const isMillenial =  () => {
+            console.log(this);
+            console.log(this.year >= 1981 && this.year <= 1996);
+        };
+        isMillenial();
+    },
+    
+    // This will not work on arrow functions because arrow functions will get its this from the global so it will be the window object
+    // Lesson: Never ever use an arrow functions as a method
+    greet: () => {
+        console.log(this);
+        console.log(`Hey ${this.firstName}`);
+    },
+};
+jonas.greet();
+jonas.calcAge();
+
+
+*/
+
+
+// Primitive Types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(`${lastName}, ${oldLastName}`)
+
+// Reference Types
+const jessica = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27
+};
+
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before Marriage', jessica);
+console.log('After Marriage', marriedJessica);
+
+// marriedJessica = {};
+
+// Copying obects
+// Doing this method makes a new object in the heap -> jessicaCopy copies it with Object.assign method and then you're able make changes to the jessicaCopy object
+
+const jessica2 = {
+    firstName: 'Jessica',
+    lastName: 'Wiliams',
+    age: 27,
+    family: ['Alice', 'Bob']
+};
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis'; 
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+console.log('Before Marriage', jessica2);
+console.log('After Marriage', jessicaCopy);
