@@ -43,9 +43,46 @@ const restaurant = {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
-
+  
 };
 
+
+
+/*
+//////////////////////////////
+// Shot Circuting (&& and ||)
+
+console.log('------ OR ------')
+// Logical operator properties: 
+// 1.) Use ANY data type, 2.) return ANY data type, 3.) short-circuiting or short circuit evaluation 
+console.log(3 || 'Jonas'); // if the first value is a truthy value, it will immediately return that value 
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('------ AND ------');
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas'); 
+// When the first value is falsy, it will stop evaluating and it will return the first value
+// When the first value is truthy, it will keep evaluating and it will return the second value but if there are a lot then it will return the next falsy value
+
+console.log('Hello' && 23 && null && 'jonas');
+
+// Practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
 // 1) DESTRUCTURING 
 // SPREAD, because it's on the RIGHT  side of = sign
@@ -81,7 +118,6 @@ add(...x);
 restaurant.orderPizza('mushrooms', 'onions', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
 
-/*
 // Spread operator using (...)
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
