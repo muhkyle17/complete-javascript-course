@@ -50,7 +50,7 @@ const restaurant = {
 
 /*
 //////////////////////////////
-// Shot Circuting (&& and ||)
+// Short Circuting (&& and ||)
 
 console.log('------ OR ------')
 // Logical operator properties: 
