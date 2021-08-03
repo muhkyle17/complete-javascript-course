@@ -54,7 +54,7 @@ const restaurant = {
 /* 
 
 ///////////////////////////////////////
-// Looping Obects: Object Keys,
+// Looping Obects: Object Keys, Values, and Entries
 
 // Property NAMES
 const properties = Object.keys(openingHours);
