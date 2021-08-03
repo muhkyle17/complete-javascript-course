@@ -32,6 +32,8 @@ const restaurant = {
   // ES6 enhanced object literals
   openingHours,
 
+
+  // Enhanced Object Literals -- Can be written with or without the function keyword
   order (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
@@ -51,32 +53,122 @@ const restaurant = {
   
 };
 
-/* 
+
+
+/*
+///////////////////////////////////////
+// Coding Challenge #2
+
+Let's continue with our football betting app!
+
+1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+      Odd of victory Bayern Munich: 1.33
+      Odd of draw: 3.25
+      Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
+BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+
+GOOD LUCK 😀
+*/
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// 1.) 
+const scorers = [...game.scored];
+
+for (const [i, el] of scorers.entries()) {
+  console.log(`Goal ${i + 1}: ${el}`);
+}
+
+// 2.) 
+const odds = Object.values(game.odds);
+
+let average = 0;
+for (const odd of odds) 
+average += odd;
+average /= odds.length;
+console.log(average);
+
+// 3.) 
+for (const [ team, odd ] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
+
+
+/*
 
 ///////////////////////////////////////
 // Looping Obects: Object Keys, Values, and Entries
 
 // Property NAMES
-const properties = Object.keys(openingHours);
+const properties = Object.keys(openingHours); // Object.keys method returns an array of a given object's own property names and is iterated in the same order that a normal loop would 
 console.log(properties);
 
 let openStr = `We are open on ${properties.length} days: `
 for (const day of properties) {
-  openStr +=`${day},`
+  openStr +=`${day}, `
 }
 console.log(openStr);
 
 // Property VALUES
-const values = Object.values(openingHours);
+const values = Object.values(openingHours); // Object.keys method returns an array of a given object's own property values and is iterated in the same order that a normal loop would 
 console.log(values);
 
 // Entire object
-const entries = Object.entries(openingHours);
+const entries = Object.entries(openingHours); // Object.keys method returns an array of a given object's own entire object and is iterated in the same order that a normal loop would 
 console.log(entries);
 
 for (const [day, {open, close}] of entries) {
   console.log(`On ${day} we open at ${open} and close at ${close}`);
-}
+} // contains destructuring 
 
 
 ///////////////////////////////////////
@@ -87,9 +179,10 @@ if (restaurant.openingHours && restaurant.openingHours.mon)
 
 // console.log(restaurant.openingHours.mon.open);
 
-// WITH optional chaining with (?)
+// WITH optional chaining with (?) -- shortcut to the code above
+// If the condition before the (?) exists, then it will look for the property after the (?) but still connected to the chain itself
 console.log(restaurant.openingHours.mon?.open);
-console.log(restaurant.openingHours?.mon?.open);
+console.log(restaurant.openingHours?.mon?.open); // Multiple optional chaining 
 
 //Example
 const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
@@ -97,7 +190,7 @@ const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 for(const day of days) {
   const open = restaurant.openingHours[day]?.open ?? 'closed';
-  console.log(`On ${day}, open at ${open}`)
+  console.log(`On ${day}, we open at ${open}`)
 }
 
 
@@ -110,7 +203,7 @@ const users = [ {name: 'Jonas', email: 'hello@jonas.io'} ];
 // const users = [];
 
 console.log(users[0]?.name ?? 'User array empty');
-
+// ----- Longer Version -----
 if (users.length > 0) console.log(users[0].name);
 else console.log('User array empty')
 
@@ -122,9 +215,32 @@ const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
 for (const item of menu) console.log(item);
 
+// Entries adds the index number corresponsding to the item and puts it inside its own arrays 
+for (const item of menu.entries()) {
+  console.log(item);
+}
+//Output:
+  // [0, "Focaccia"]
+  // [1, "Bruschetta"]
+  // [2, "Garlic Bread"]
+  // [3, "Caprese Salad"]
+  // [4, "Pizza"]
+  // [5, "Pasta"]
+  // [6, "Risotto"]
+
+// Destructured [i, el]
 for (const [i, el] of menu.entries()) {
   console.log(`${i + 1}: ${el}`);
 }
+
+// Output:
+  // 1: Focaccia
+  // 2: Bruschetta
+  // 3: Garlic Bread
+  // 4: Caprese Salad
+  // 5: Pizza
+  // 6: Pasta
+  // 7: Risotto
 
 // console.log([...menu.entries()]);
 
@@ -147,8 +263,6 @@ Suppose we get data from a web service about a certain game (below). In this cha
 TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
 
 GOOD LUCK 😀
-
-
 
 
 const game = {
