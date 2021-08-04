@@ -53,10 +53,43 @@ const restaurant = {
   
 };
 
+/*
 //////////////////////////////
-// Maps
+// Maps: Iteration
+
+// In array maps, it works just the same - first position is the key while the second position is the value 
+// When creating a new map from scratch, this is the better way to write it at first rather than writing rest.set method but when writing new elements into the map, then the rest.set method is still the better way to write it 
+const question = new Map ([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct!'],
+  [false, 'Try again!'],  
+]);
+console.log(question);
+
+// Convert object to map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+//Quiz app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+const answer = Number(prompt('Your answer'));
+console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));
+
+//////////////////////////////
+// Maps: Fundamentals
 // A map is a data structure that we can use to map values to keys 
-// In maps, the keys can have any type whereas objects are only always strings -> maps can have different kinds of keys like objects, arrays or other maps 
+// In maps, the keys can have any type whereas objects are only always strings -> maps can have different kinds of keys like objects, arrays or other maps
+// Structured in such a way that the first position is the key while the second position is the value
 
 const rest = new Map();
 rest.set('name', 'Classico Italiano');
@@ -90,7 +123,6 @@ rest
   // console.log(rest.get([1, 2])); // This returns undefined because it is not the same as the key with the test value (as defined by the heap) 
   console.log(rest.get(arr));
 
-/*
 //////////////////////////////
 // Sets 
 
