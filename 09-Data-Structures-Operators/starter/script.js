@@ -53,9 +53,82 @@ const restaurant = {
   
 };
 
+//////////////////////////////
+// Maps
+// A map is a data structure that we can use to map values to keys 
+// In maps, the keys can have any type whereas objects are only always strings -> maps can have different kinds of keys like objects, arrays or other maps 
 
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Lisbon, Portugal'));
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :D')
+  .set(false, 'We are closed :(');
+
+  console.log(rest.get('name'));
+  console.log(rest.get(true));
+  console.log(rest.get(1));
+
+  const time = 8;
+  console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+  const arr = [1, 2];
+  console.log(rest.has('categories'));
+  rest.delete(2);
+  // rest.clear();
+  // rest.set([1, 2], 'Test')
+  rest.set(arr, 'Test');
+  rest.set(document.querySelector('h1'), 'Heading');
+  console.log(rest);
+  console.log(rest.size);
+
+  // console.log(rest.get([1, 2])); // This returns undefined because it is not the same as the key with the test value (as defined by the heap) 
+  console.log(rest.get(arr));
 
 /*
+//////////////////////////////
+// Sets 
+
+const ordersSet = new Set([
+  'Pasta', 
+  'Pizza', 
+  'Pizza', 
+  'Risotto', 
+  'Pasta', 
+  'Pizza'
+]);
+
+
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for(const order of ordersSet) console.log(order);
+
+// Example 
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(new Set (['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('jonasschmedtmann').size);
+
+
 ///////////////////////////////////////
 // Coding Challenge #2
 
@@ -77,7 +150,7 @@ BONUS: Create an object called 'scorers' which contains the names of the players
       }
 
 GOOD LUCK 😀
-*/
+
 
 const game = {
   team1: 'Bayern Munich',
