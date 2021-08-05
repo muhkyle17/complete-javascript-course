@@ -53,6 +53,57 @@ const restaurant = {
   
 };
 
+
+//////////////////////////////
+// Coding Challenge #3
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+// 1.) 
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2.) 
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3.) 
+console.log(`An event happend, on average, every ${90 / gameEvents.size} minutes`);
+const time = [...gameEvents.keys()].pop();
+console.log(time);
+console.log(`An event happend, on average, every ${time / gameEvents.size} minutes`);
+
+// 4.)
+for (const [minute, event] of gameEvents) {
+  const time = minute <= 45 ? 'FIRST' : 'SECOND'
+  const firstHalf = minute <= 45;
+  const secondHalf = minute > 45 && minute <= 100;
+
+  if (firstHalf) {
+    console.log(`[${time} HALF] ${minute}: ${event}`);
+  } else if (secondHalf) {
+    console.log(`[${time} HALF] ${minute}: ${event}`);
+  }
+}
+// Shorter version 
+console.log('----- SHORTER VERSION OF CODE -----');
+for (const [minute, event] of gameEvents) {
+  const time = minute <= 45 ? 'FIRST' : 'SECOND'
+  console.log(`[${time} HALF] ${minute}: ${event}`);
+}
+
 /*
 //////////////////////////////
 // Maps: Iteration
@@ -154,7 +205,7 @@ for(const order of ordersSet) console.log(order);
 // Example 
 const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
 const staffUnique = [...new Set(staff)];
-console.log(staffUnique);
+console.log(staffUnique); // [Waiter, Chef, Manager]
 console.log(new Set (['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
 );
 
