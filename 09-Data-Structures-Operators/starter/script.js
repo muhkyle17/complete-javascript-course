@@ -53,6 +53,68 @@ const restaurant = {
   
 };
 
+//////////////////////////////
+// Working with Strings Part 3
+
+// The split method helps you divide the string by passing an argument inside it to help divide it
+console.log('a|very|cool|string'.split('|'));
+console.log('Jonas Schedtmann'.split(' '));
+
+// Same method but destructued in an array 
+const [firstName, lastName] = 'Mikyle Reyes'.split(' ');
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  console.log(names);
+  const namesUpper = [];
+
+  for(const capName of names) {
+    // namesUpper.push(capName[0].toUpperCase() + capName.slice(1)); 
+    // OR 
+    namesUpper.push(capName.replace(capName[0], capName[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+}
+
+capitalizeName('jessica ann smith davis');
+capitalizeName('mikyle reyes');
+
+// Padding a string
+// This means that you add a number of character to the string until the string has certain number of desired strings length
+// First value is the total number of characters while the second value is the character that you want to add 
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '!').padEnd(30, '!'));
+console.log('Jonas'.padStart(25, '!').padEnd(30, '!'));
+
+const maskCreditCard = function (number) {
+  const str = String(number);
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+}
+
+console.log(maskCreditCard(2938458));
+console.log(maskCreditCard(9823748284923879));
+console.log(maskCreditCard(29834898924394893234));
+
+// Repeat Method 
+const message2 = 'Due to bad weather, all departures will be delayed \n';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+planesInLine(50);
+
+/*
+
+//////////////////////////////
+// Working with Strings Part 2
+
 const airline = 'TAP Air Portugal';
 
 console.log(airline.toLowerCase());
@@ -125,7 +187,7 @@ if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
 // Practice exercise 
 const checkBaggage = function (items) {
   const baggage = items.toLowerCase();
-  
+
   if (baggage.includes('knife') || baggage.includes('gun')) {
     console.log(`You are NOT allowed on board`);
   } else {
@@ -137,8 +199,6 @@ checkBaggage('I have a laptop, some Food and a pocket Knife');
 checkBaggage('Socks and camera');
 checkBaggage('Got some snacks, and a gun for protection');
 
-
-/*
 
 //////////////////////////////
 // Working with Strings Part 1
