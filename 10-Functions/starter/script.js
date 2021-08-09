@@ -71,8 +71,6 @@ checkIn(flight, jonas);
 
 // Javascript does not have pass by reference only by value 
 
-*/
-
 ///////////////////////
 // First-Class and Higher-Order Functions 
 
@@ -99,12 +97,38 @@ const transformer = function(str, fn) {
 transformer('JavaScript is the best!', upperFirstWord); 
 transformer('JavaScript is the best!', oneWord);
 
+
+// JS uses callbacks all the time 
 const high5 = function() {
     console.log('👋🏼');
 }
 document.body.addEventListener('click', high5);
-
-
-const forEach = ['Jonas', 'Martha', 'Adam', 'Hello']
-forEach.forEach(high5);
+['Jonas', 'Martha', 'Adam'].forEach(high5);
 // forEach() method executes a provided functions once for each Array element 
+
+*/
+
+////////////////////// 
+// Functions returning functions 
+
+const greet = function(greeting) {
+    return function(name) {
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
+
+greet('Hello')('Jonas');
+
+const greetArr = (greeting) => {
+    return (name) => {
+        console.log(`${greeting} ${name}`);
+    }
+}
+greetArr('Hello')('Mikyle');
+
+const greetArr2 = greeting => name => console.log(`${greeting} ${name}`)
+greetArr2('Hello')('World');
