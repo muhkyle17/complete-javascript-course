@@ -106,8 +106,6 @@ document.body.addEventListener('click', high5);
 ['Jonas', 'Martha', 'Adam'].forEach(high5);
 // forEach() method executes a provided functions once for each Array element 
 
-*/
-
 ////////////////////// 
 // Functions returning functions 
 
@@ -132,3 +130,59 @@ greetArr('Hello')('Mikyle');
 
 const greetArr2 = greeting => name => console.log(`${greeting} ${name}`)
 greetArr2('Hello')('World');
+
+*/
+
+////////////////////// 
+// The Call and Apply Methods 
+
+const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    // book: ()
+    book: function(flightNum, name) {
+        console.log(
+            `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+        ); 
+        this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+    },
+};
+
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+console.log(lufthansa);
+
+
+const eurowings = {
+    airline: 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+};
+
+// Call Method 
+// The call() method calls a function with a given this value and arguments provided individually.
+const book = lufthansa.book;
+
+// book(23, 'Sarah Williams'); // This does not work because the this keyword won't be working anymore
+book.call(eurowings, 23, 'Sarah Williams')
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+    airline: 'Swiss Air Lines',
+    iataCode: 'LX', 
+    bookings: []
+}
+
+book.call(swiss, 583, 'Mary Cooper');
+
+// Apply Method 
+// The apply() method calls a function with a given this value, and arguments provided as an array (or an array-like object)
+const flightData = [583, 'George Cooper'];
+book.apply[swiss, flightData];
+console.log(swiss);
+
+book.call(swiss, ...flightData);
