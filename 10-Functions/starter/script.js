@@ -1,6 +1,9 @@
 'use strict';
 
 /* 
+
+////////////////////
+// Default Parameters 
 const bookings = [];
 
 const createBooking = function(
@@ -30,7 +33,9 @@ createBooking('LH123', 5);
 
 createBooking('LH123', undefined, 1000); // This is a simple trick to skip the value you want to set as default 
 
-*/
+
+////////////////////
+// How Passing Arguments Work
 
 const flight = 'LH234';
 const jonas = {
@@ -41,7 +46,7 @@ const jonas = {
 const checkIn = function(flightNum, passenger) {
     flightNum = 'LH999';
     passenger.name = 'Mr. ' + passenger.name;
-
+    
     if (passenger.passport === 23424092423) {
         alert('Checked In')
     } else {
@@ -65,3 +70,41 @@ newPassport(jonas);
 checkIn(flight, jonas);
 
 // Javascript does not have pass by reference only by value 
+
+*/
+
+///////////////////////
+// First-Class and Higher-Order Functions 
+
+// Higher-Order Functions --> Functions Accepting Callback Functions 
+
+const oneWord = function(str) {
+    return str.replace(/ /g, '').toLowerCase();
+}
+
+const upperFirstWord = function(str) {
+    const [first, ...others] = str.split(' ');
+    return [first.toUpperCase(), ...others].join(' ');
+};
+
+// Higher-order functions 
+const transformer = function(str, fn) {
+    console.log(`Original string: ${str}`);
+    console.log(`Transformed string: ${fn(str)}`);
+
+    console.log(`Transformed by: ${fn.name}`)
+}
+
+// This callback function uses the upperFirstWord to pass into the transformer function (fn) where it will be used inside that function 
+transformer('JavaScript is the best!', upperFirstWord); 
+transformer('JavaScript is the best!', oneWord);
+
+const high5 = function() {
+    console.log('👋🏼');
+}
+document.body.addEventListener('click', high5);
+
+
+const forEach = ['Jonas', 'Martha', 'Adam', 'Hello']
+forEach.forEach(high5);
+// forEach() method executes a provided functions once for each Array element 
