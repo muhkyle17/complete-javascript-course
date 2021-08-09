@@ -186,3 +186,50 @@ book.apply[swiss, flightData];
 console.log(swiss);
 
 book.call(swiss, ...flightData);
+
+////////////////////// 
+// The Bind Method
+// The bind() method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Steven Williams')
+
+// This is called partial application where the bind method presets a parameter (23) to flightNum and calling it means we pass a name to the name function parameter 
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Jonas Schmedtmann');
+bookEW23('Martha Cooper');
+
+// Bind method with Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function() {
+    console.log(this);
+
+    this.planes++
+    console.log(this.planes);
+};
+lufthansa.buyPlane(); // This is important becasue this calls the above function first and the this keyword will then apply to the function calling it - without it, the this keyword will pertain to the document.query selector because it doesn't since it will pertain to the function calling it which is the addEventListener function 
+document
+    .querySelector('.buy')
+    .addEventListener('click', lufthansa.buyPlane.bind(lufthansa)
+);
+
+//Partial Application
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.10, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+// Same as writing this -> addVat = value => value + value * 0.23;
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+const addTaxRate = function (rate) {
+    return function (value) {
+        return value + value * rate;
+    }
+}
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(23));
+console.log(addVAT2(100));
