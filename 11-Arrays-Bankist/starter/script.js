@@ -65,11 +65,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -111,8 +111,6 @@ console.log(letters.join(' - '));
 
 // Always got to the documentation on the MDN to check for these methods and how to use them 
 
-*/
-
 /////////////////////////////////////////////////
 // Looping Arrays: ForEach Method 
 
@@ -130,6 +128,7 @@ for (const[i, movement] of movements.entries()) {
 console.log('------- FOR EACH --------');
 // forEach is a higher order function that requires a callback function in order to tell it what to do 
 // The forEach() method executes a provided function once for each array element.
+// Order: (current element, current index, entire array)
 movements.forEach(function(mov, i, arr) {
   if (mov > 0) {
     console.log(`Transaction ${i + 1}: You deposited ${mov}`);
@@ -141,3 +140,29 @@ movements.forEach(function(mov, i, arr) {
 // 1: function(450)
 // 2: function(400)
 // ...
+
+/////////////////////////////////////////////////
+// forEach with Maps and Sets
+
+// With Map
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`)
+})
+
+// With Set 
+const currenciesUnique = new Set (['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach(function(value, _, map) {
+  console.log(`${value}: ${value}`)
+})
+
+*/
+
+/////////////////////////////////////////////////
+// Project: "Bankist" App
