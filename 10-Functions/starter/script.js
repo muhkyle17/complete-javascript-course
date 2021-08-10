@@ -310,8 +310,6 @@ poll.displayResults.call({answers: [1, 5, 3, 9, 6] });
 // [5, 2, 3]
 // [1, 5, 3, 9, 6, 1]
 
-*/
-
 ////////////////////// 
 // Immediately Invoked Function Expressions (IFFE)
 
@@ -335,3 +333,37 @@ runOnce();
 
 // console.log(isPrivate);
 console.log(notPrivate);
+
+*/
+
+////////////////////// 
+// Closures
+
+const secureBooking = function() {
+  let passengerCount = 0;
+  
+  return function() {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  }
+}
+
+// Just to remind you that the booker becomes a function because you're assigning the secureBooking function to it that of which has another function inside of it 
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
+
+// A closure makes a function remember all the variables that existed at the function's birthplace 
+// A functions always has access to the variable environemnt of the execution context in which it was created 
+// Closure: Variable environment attached to the function, exactly as it was at the time and place the function was created 
+// Thanks to the closure, a function does not lose connection to the variables that existed at the function's birthplace 
+// A closure is also the closed-over variable environment of the execution context in which a function was created, even after that execution context is gone 
+// A closure gives a function access to all the variables of its parent function, even after that parent function has returend. The function keeps a reference to its outer scopre, which preserves the scope chain throughout time 
+// A closure makes sure that a function doesn't loose connection to variables that existed at the function's birthpalce 
+// It's like a person never losses its connection to their hometown 
+// A closure is like a backpack that a function carries around wherever it goes. This backpack has all the variables that were present in the environment where the function was created 
+// We do not have to manually create closures, this is something that JavaScript does automatically 
