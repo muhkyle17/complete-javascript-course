@@ -74,3 +74,35 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE Method - does not mutate the original aray
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-2));
+console.log(arr.slice(-1));
+console.log(arr.slice(1, -2));
+console.log(arr.slice()); // Makes a shallow copy of the original array for use
+console.log([...arr]);
+
+// SPLICE Method - mutates the original array by deleting certain array elements 
+// console.log(arr.splice(2));
+arr.splice(-1);
+console.log(arr);
+arr.splice(1, 2);
+console.log(arr);
+
+// REVERSE Method - Using this mutates the array when you reverse it 
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f']
+console.log(arr2.reverse());
+console.log(arr2);
+
+// CONCAT Method - Used to concatenate two arrays but does not mutate the original array
+const letters = arr.concat(arr2);
+console.log(letters);
+console.log([...arr, ...arr2]); // Does the same thing as concatenating 
+
+// JOIN Method - Used to join the array into a string and will be separate by whatever you specify within the parenthesis
+console.log(letters.join(' - '));
