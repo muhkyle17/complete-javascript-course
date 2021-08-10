@@ -71,9 +71,11 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+/*
 /////////////////////////////////////////////////
+// Simple Array Methods
 
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
@@ -106,3 +108,36 @@ console.log([...arr, ...arr2]); // Does the same thing as concatenating
 
 // JOIN Method - Used to join the array into a string and will be separate by whatever you specify within the parenthesis
 console.log(letters.join(' - '));
+
+// Always got to the documentation on the MDN to check for these methods and how to use them 
+
+*/
+
+/////////////////////////////////////////////////
+// Looping Arrays: ForEach Method 
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for (const movement of movements) {
+for (const[i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Transaction ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Transaction ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+console.log('------- FOR EACH --------');
+// forEach is a higher order function that requires a callback function in order to tell it what to do 
+// The forEach() method executes a provided function once for each array element.
+movements.forEach(function(mov, i, arr) {
+  if (mov > 0) {
+    console.log(`Transaction ${i + 1}: You deposited ${mov}`);
+  } else {
+    console.log(`Transaction ${i + 1}: You withdrew ${Math.abs(mov)}`);
+  }
+});
+// 0: function(200)
+// 1: function(450)
+// 2: function(400)
+// ...
