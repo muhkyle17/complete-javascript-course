@@ -80,6 +80,19 @@ const displayMovements = function(movements) {
 }
 displayMovements(account1.movements);
 
+const createUsernames = function(accs) {
+  accs.forEach(function(acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(function(name) {
+        return name [0];
+      }).join('');
+  });
+};
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -224,7 +237,6 @@ const checkDogs = function (dogsJulia, dogsKate) {
 checkDogs([3, 5, 2, 12, 17], [4, 1, 15, 8, 3]);
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
-*/
 
 ///////////////////////////////////////
 // Data Transformations with Map, Filter and Reduce 
@@ -271,3 +283,39 @@ const movementDescriptions = movements.map( (mov, i) =>
 
 console.log(movementDescriptions);
 
+///////////////////////////////////////
+// Filter Method
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// This is more functional because you can chain the methods to do a lot of things to what you're trying to do 
+console.log('------ Deposits ------')
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+})
+console.log(movements);
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) {
+  if (mov > 0) depositsFor.push(mov);
+}
+console.log(depositsFor);
+
+console.log('------ Withdrawals ------')
+const withdrawals = movements.filter(function (mov) {
+  return mov < 0;
+});
+console.log(movements);
+console.log(withdrawals);
+
+const withdrawalsFor = []
+for (const mov of movements) {
+  if (mov < 0) withdrawalsFor.push(mov);
+}
+console.log(withdrawalsFor);
+
+*/
+
+///////////////////////////////////////
+// Filter Method
