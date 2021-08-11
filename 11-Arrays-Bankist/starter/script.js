@@ -211,7 +211,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
   
   const dogsBoth = dogsJuliaCorrected.concat(dogsKate);
   console.log(dogsBoth);
-  
+
   dogsBoth.forEach(function(dog, i) {
     if (dog >= 3) {
       console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`);
@@ -226,3 +226,9 @@ checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
 */
 
+///////////////////////////////////////
+// Data Transformations with Map, Filter and Reduce 
+
+// Map returns a new array containing the results of applying an operations on all original array elements 
+// Filter returns a new array containing the array elements that passed a specficied test condition - the filtered elements return a new array and all the unfiltered ones do not 
+// Reduce boils all array elements down to one single value and the value gets returned  (e.g. adding all elements together)
