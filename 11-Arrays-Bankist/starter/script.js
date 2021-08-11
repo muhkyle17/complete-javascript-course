@@ -265,8 +265,9 @@ console.log(movementsUSDfor);
 
 // OR
 
-const movementDescriptions = movements.map( (mov, i, arr) =>
+const movementDescriptions = movements.map( (mov, i) =>
   `Transaction ${i + 1}: You ${mov > 0 ? `deposited` : `withdrew`} ${Math.abs(mov)}`
 );
 
 console.log(movementDescriptions);
+
