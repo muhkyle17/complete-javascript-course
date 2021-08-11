@@ -229,6 +229,44 @@ checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 ///////////////////////////////////////
 // Data Transformations with Map, Filter and Reduce 
 
+// These methods are like for each but it allows you to apply something to that method
 // Map returns a new array containing the results of applying an operations on all original array elements 
 // Filter returns a new array containing the array elements that passed a specficied test condition - the filtered elements return a new array and all the unfiltered ones do not 
 // Reduce boils all array elements down to one single value and the value gets returned  (e.g. adding all elements together)
+
+///////////////////////////////////////
+// The Map Method
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+
+const movementsUSD = movements.map(function(mov) {
+  return mov * eurToUsd;
+})
+
+const movementsUSDArrow = movements.map(mov => mov * eurToUsd);
+
+console.log(movements)
+console.log(movementsUSD)
+console.log(movementsUSDArrow);
+
+const movementsUSDfor = []
+for (const mov of movements) movementsUSDfor.push(mov*eurToUsd);
+console.log(movementsUSDfor);
+
+// const movementDescriptions = movements.map(function(mov, i, arr) {
+//   if (mov > 0) {
+//     return `Transaction ${i + 1}: You deposited ${mov}`
+//   } else {
+//     return `Transaction ${i + 1}: You withdrew ${Math.abs(mov)}`
+//   }
+// });
+
+// OR
+
+const movementDescriptions = movements.map( (mov, i, arr) =>
+  `Transaction ${i + 1}: You ${mov > 0 ? `deposited` : `withdrew`} ${Math.abs(mov)}`
+);
+
+console.log(movementDescriptions);
