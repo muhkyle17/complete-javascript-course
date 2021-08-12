@@ -61,6 +61,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+// Display the transcations made in and out 
 const displayMovements = function(movements) {
   containerMovements.innerHTML = '';
 
@@ -80,21 +81,47 @@ const displayMovements = function(movements) {
 }
 displayMovements(account1.movements);
 
+//Display the total value of all transactions
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce(function(acc, mov) {
     return acc + mov
   }, 0); 
-  labelBalance.textContent = `${balance} EUR`
+  labelBalance.textContent = `$${balance}`
 }
 calcDisplayBalance(account1.movements);
 
+// Display the total incomes, total expenses and total interest 
+const calcDisplaySummary = function(movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `﹩${incomes}`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `$${Math.abs(out)}`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => deposit * 1.2/100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `$${interest}`;
+};
+calcDisplaySummary(account1.movements);
+
+// Creates a username for each account contained within the accounts array
 const createUsernames = function(accs) {
   accs.forEach(function(acc) {
     acc.username = acc.owner
       .toLowerCase()
       .split(' ')
       .map(function(name) {
-        return name [0];
+        return name[0];
       }).join('');
   });
 };
@@ -252,7 +279,7 @@ checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 // Data Transformations with Map, Filter and Reduce 
 
 // These methods are like for each but it allows you to apply something to that method
-// Map returns a new array containing the results of applying an operations on all original array elements 
+// Map returns a new array containing the results of applying an operation on all original array elements 
 // Filter returns a new array containing the array elements that passed a specficied test condition - the filtered elements return a new array and all the unfiltered ones do not 
 // Reduce boils all array elements down to one single value and the value gets returned  (e.g. adding all elements together)
 
@@ -375,8 +402,6 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 
-*/
-
 const calcAverageHumanAge = function (ages) {
   let humanAge = 0;
   const humanAgeArr = [];
@@ -416,3 +441,21 @@ const calcAverageHumanAge = function (ages) {
 
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+*/
+
+///////////////////////////////////////
+// The Magic of Chaining Methods
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  // .map(mov => mov * eurToUsd)
+  .map((mov, i, arr) => {
+    // console.log(arr);
+    return mov * eurToUsd
+  })
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD);
