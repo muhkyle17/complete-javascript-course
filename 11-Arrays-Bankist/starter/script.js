@@ -107,7 +107,7 @@ const calcDisplaySummary = function (movements) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
+      // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
@@ -128,7 +128,7 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
-console.log(accounts);
+// console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -473,13 +473,30 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK 😀
 
 
-*/
 
 const calcAverageHumanAge1 = ages =>
-  ages
-    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
-    .filter(age => age >= 18)
-    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+ages
+.map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+.filter(age => age >= 18)
+.reduce((acc, age, i, arr) => acc + age / arr.length, 0);
 
 console.log(calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]));
 console.log(calcAverageHumanAge1([16, 6, 10, 5, 6, 1, 4]));
+
+*/
+
+// The goal of the find method is to usually look for one element that matches the condition
+// Find method is similar to filter method
+// Filter method returns all the elements that match the condition while the find method only returns the first one
+// Filter method returns a new array while the find method returns the element itself and not the array
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
