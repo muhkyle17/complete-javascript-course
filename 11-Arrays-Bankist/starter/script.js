@@ -80,7 +80,6 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
 
 //Display the total value of all transactions
 const calcDisplayBalance = function (movements) {
@@ -89,23 +88,22 @@ const calcDisplayBalance = function (movements) {
   }, 0);
   labelBalance.textContent = `$${balance}`;
 };
-calcDisplayBalance(account1.movements);
 
 // Display the total incomes, total expenses and total interest
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `﹩${incomes}`;
+  labelSumIn.textContent = `$${incomes}`;
 
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `$${Math.abs(out)}`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
       // console.log(arr);
       return int >= 1;
@@ -113,7 +111,6 @@ const calcDisplaySummary = function (movements) {
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `$${interest}`;
 };
-calcDisplaySummary(account1.movements);
 
 // Creates a username for each account contained within the accounts array
 const createUsernames = function (accs) {
@@ -128,7 +125,38 @@ const createUsernames = function (accs) {
   });
 };
 createUsernames(accounts);
-// console.log(accounts);
+
+// Event Handlers
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  //Prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and Login message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }!`;
+    containerApp.style.opacity = 100;
+
+    //Clear Input Fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    // Display movements
+    displayMovements(currentAccount.movements);
+    // Display Balance
+    calcDisplayBalance(currentAccount.movements);
+    // Display Summary
+    calcDisplaySummary(currentAccount);
+  }
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -140,7 +168,7 @@ createUsernames(accounts);
 //   ['GBP', 'Pound sterling'],
 // ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /*
 /////////////////////////////////////////////////
@@ -483,7 +511,9 @@ ages
 console.log(calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]));
 console.log(calcAverageHumanAge1([16, 6, 10, 5, 6, 1, 4]));
 
-*/
+
+///////////////////////////////////////
+// Find Method
 
 // The goal of the find method is to usually look for one element that matches the condition
 // Find method is similar to filter method
@@ -500,3 +530,5 @@ console.log(accounts);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
+
+*/
