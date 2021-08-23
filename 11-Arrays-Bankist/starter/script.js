@@ -604,8 +604,6 @@ console.log(accounts);
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
 
-*/
-
 ///////////////////////////////////////
 // SOME and EVERY Methods
 
@@ -631,3 +629,37 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+
+*/
+
+///////////////////////////////////////
+// flat and flatMap Methods
+
+// flat
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+// The flat method with a specific number specifies how deep the flat method will go by specifying the number within the parenthesis
+// This is for when there are arrays within arrays
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+const overallBalanceNested = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalanceNested);
+
+// flatMap
+// flatMap method is just a combination of both the flat method and the map method but in only goes one level deep so if you want to specify another level deep then you will still have to use the flat method
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalanceNested);
