@@ -671,8 +671,6 @@ const overallBalance2 = accounts
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalanceNested);
 
-*/
-
 ///////////////////////////////////////
 // Sorting arrays
 
@@ -691,7 +689,8 @@ console.log(movements);
 //   if (a > b) return 1;
 //   if (a < b) return -1;
 // });
-movements.sort((a, b) => a - b); /* a = current value and b = next value */
+movements.sort((a, b) => a - b); // a = current value and b = next value 
+
 console.log(movements);
 
 // Descending
@@ -701,3 +700,46 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
+
+*/
+
+///////////////////////////////////////
+// More Ways of Creating and Filling Arrays
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x);
+// console.log(x.map(() => 5));
+// x.fill(1);
+x.fill(1, 3, 5); // Similar to slice method (number you want to insert, what position to start, what position does it end)
+x.fill(1);
+console.log(x);
+
+arr.fill(23, 2, 6);
+console.log(arr);
+
+// Array.from method
+// This way is much cleaner than using .fill method
+// Similar to map method wherein (current, index);
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (cur, i) => i + 1);
+console.log(z);
+
+const randomDice = Array.from({ length: 100 }, (cur, i) =>
+  Math.floor(Math.random(cur) * 101)
+);
+console.log(randomDice);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('movements__value'),
+    el => Number(el.textContent.replace('$', ''))
+  );
+
+  console.log(movementsUI);
+});
