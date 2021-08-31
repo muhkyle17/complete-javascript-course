@@ -90,7 +90,6 @@ DATA CAR 1: 'BMW' going at 120 km/h
 DATA CAR 2: 'Mercedes' going at 95 km/h
 
 GOOD LUCK 😀
-*/
 
 const Car = function (make, speed) {
   this.make = make;
@@ -116,3 +115,43 @@ bmw.brake();
 mercedes.brake();
 mercedes.brake();
 mercedes.brake();
+
+*/
+
+// ES6 Classes
+
+// classes are another form of functions
+// class expression
+// class PersonCl = class {}
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(`${this.firstName} is ${2037 - this.birthYear} years old`);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1996);
+console.log(jessica);
+jessica.calcAge();
+const jonas = new PersonCl('Jonas', 1994);
+jonas.calcAge();
+
+console.log(jessica.__proto__ === PersonCl.prototype);
+
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}`);
+// };
+
+jessica.greet();
+jonas.greet();
