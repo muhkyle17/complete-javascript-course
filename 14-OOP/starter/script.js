@@ -577,7 +577,7 @@ console.log(acc1.getMovements());
 DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
 
 GOOD LUCK 😀
-*/
+
 
 class CarCl {
   constructor(make, speed) {
@@ -643,3 +643,42 @@ rivian
   .accelerate();
 
 console.log(rivian.speedUS);
+*/
+
+/*
+const circle = {
+  radius: 1,
+  location: {
+    x: 1,
+    y: 1,
+  },
+  draw: function () {
+    console.log('draw');
+  },
+};
+*/
+
+// Factory Function
+function createCircle(radius) {
+  return {
+    radius,
+    draw: function () {
+      console.log('draw');
+    },
+  };
+}
+const circle = createCircle(1);
+
+// Constructor Function
+function Circle(radius) {
+  // console.log('this', this);
+  this.radius = radius;
+  this.draw = function () {
+    console.log('draw');
+  };
+}
+
+Circle.call({}, 1);
+Circle.apply({}, [1, 2, 3]);
+
+const another = new Circle(1);
